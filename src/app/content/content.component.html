@@ -4,12 +4,40 @@
     <h1 class="display-3">{{ title }}</h1>
     <p class="lead">Jumbo helper text</p>
 
-    <hr class="my-2">
-    <input [(ngModel)]="title" type="text" placeholder="New Title..." class="form-control mb-2">
 
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
-    </p>
+    
+
+    <hr class="my-2">
+    <input [(ngModel)]="course.title" type="text" placeholder="New Title..." class="form-control mb-2">
+
+    <input [(ngModel)]="course.price" type="number" placeholder="Price" class="form-control mb-2">
+
+    <textarea placeholder="description" class="form-control" [(ngModel)]="course.description" rows="4"></textarea>
+     
+    <button class="btn btn-warning btn-block mb-2" 
+      *ngIf="editable"
+    (click)="updateCourse()">Update</button>
+
+    <button class="btn btn-danger btn-block mb-2" 
+    *ngIf="!editable"
+    (click)="addCourse()">Add</button>
+
+     <ul class="list-group">
+       <li class="list-group-item" 
+        *ngFor="let course of courses; index as i">
+         {{ course.title }} Price: {{ course.price }} <br>
+         {{ course.description }}
+        <div class="text-right">
+          <button class="btn btn-sm btn-dark mr-1"
+          (click)="editCourse(course)"
+          >Edit</button>
+         <button class="btn btn-sm btn-danger" 
+         (click)="deleteCourse(i)">Delete</button>
+        </div>
+  
+       </li>
+     </ul>
+    
   </div>
 </div>
 

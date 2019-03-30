@@ -4,8 +4,13 @@
     <h1 class="display-3">{{ title }}</h1>
     <p class="lead">Jumbo helper text</p>
 
-
-    
+     <img [src]="image" alt="my image">
+     <div class="alert" [ngClass]="{
+       'alert-info': courses.length,
+       'alert-warning': !courses.length
+     }">
+       {{ courses.length }} courses in the database
+     </div>
 
     <hr class="my-2">
     <input [(ngModel)]="course.title" type="text" placeholder="New Title..." class="form-control mb-2">

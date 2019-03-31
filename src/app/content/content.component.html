@@ -40,7 +40,14 @@
          {{ course.title | uppercase | titlecase }} Price: {{ course.price | currency:'EUR':'symbol':'1.2-3' }}  <br>
          {{ course.description | summary:30 }}
              
-         <app-votes [like]="course.votes.like" [dis-like]="course.votes.disLike"></app-votes>
+         like: {{ course.votes.like }} - disLike: {{ course.votes.disLike }}
+
+         <app-votes 
+            [like]="course.votes.like" 
+            [dis-like]="course.votes.disLike"
+             (changeVoteInChild)="InfluenceVoteInParent($event, course)"
+            >
+         </app-votes>
 
         <div class="text-right">
           <button class="btn btn-sm btn-dark mr-1"

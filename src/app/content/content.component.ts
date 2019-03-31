@@ -98,4 +98,16 @@ export class ContentComponent implements OnInit {
     course.votes.disLike++;
   }
 
+  InfluenceVoteInParent(event, course) {
+    console.log(event)
+
+    if(event.type) {
+      course.votes.like = event.data
+    }else {
+      course.votes.disLike = event.data
+    }
+
+
+  }
+
 }

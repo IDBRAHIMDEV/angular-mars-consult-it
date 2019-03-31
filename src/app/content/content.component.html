@@ -4,7 +4,7 @@
     <h1 class="display-3">{{ title }}</h1>
     <p class="lead">Jumbo helper text</p>
 
-     <img [src]="image" alt="my image">
+    
      <div class="alert" [ngClass]="{
        'alert-info': courses.length,
        'alert-warning': !courses.length
@@ -27,11 +27,12 @@
     *ngIf="!editable"
     (click)="addCourse()">Add</button>
 
+
      <ul class="list-group">
        <li class="list-group-item" 
         *ngFor="let course of courses; index as i">
-         {{ course.title }} Price: {{ course.price }} <br>
-         {{ course.description }}
+         {{ course.title | uppercase | titlecase }} Price: {{ course.price | currency:'EUR':'symbol':'1.2-3' }}  <br>
+         {{ course.description | summary:30 }}
         <div class="text-right">
           <button class="btn btn-sm btn-dark mr-1"
           (click)="editCourse(course)"

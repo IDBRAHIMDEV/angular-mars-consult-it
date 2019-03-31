@@ -8,6 +8,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ContentComponent } from './content/content.component';
 
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { ExtraitPipe } from './extrait.pipe';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -15,11 +19,14 @@ import { FormsModule } from '@angular/forms';
     CoursesComponent,
     NavbarComponent,
     SidebarComponent,
-    ContentComponent
+    ContentComponent,
+    ExtraitPipe,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

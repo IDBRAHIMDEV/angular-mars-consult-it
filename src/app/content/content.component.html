@@ -28,9 +28,36 @@
     (click)="addCourse()"> 
       <i class="fa fa-send"></i> Add
     </button>
+      
+
+    <div>
+      <button (click)="grid = true" class="btn btn-sm"><i class="fa fa-th"></i></button>
+      <button (click)="grid = false" class="btn btn-sm"><i class="fa fa-list"></i></button>
+    </div>
+    
+      <div class="row" *ngIf="grid">
+        <div class="col-md-4" *ngFor="let course of courses">
+          <!-- <div class="card">
+            <img class="card-img-top" [src]="'https://picsum.photos/200/300?image='+course.id" alt="">
+            <div class="card-body">
+              <h4 class="card-title">{{ course.title | titlecase }}</h4>
+              <p class="card-text">{{ course.description | summary:30 }}</p>
+            </div>
+          </div> -->
+          <app-panel>
+            <img class="card-img-top" [src]="'https://picsum.photos/200/300?image='+course.id" alt="">
+
+            <div class="body">
+              {{ course.description | summary:20 }}
+            </div>
+
+            <div class="title">{{ course.title }}.</div>
+          </app-panel>
+        </div>
+      </div>
 
 
-     <ul class="list-group">
+     <ul class="list-group" *ngIf="!grid">
        <li class="list-group-item" 
         *ngFor="let course of courses; index as i">
          <i (click)="togglePower(course)" class="fa fa-power-off" [ngClass]="{
@@ -47,6 +74,7 @@
             [dis-like]="course.votes.disLike"
              (changeVoteInChild)="InfluenceVoteInParent($event, course)"
             >
+            
          </app-votes>
 
         <div class="text-right">

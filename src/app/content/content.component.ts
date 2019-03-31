@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
-  
+  grid = false;
   image = "https://avatars0.githubusercontent.com/u/6206647?s=460&v=4";
   editable = false;
 

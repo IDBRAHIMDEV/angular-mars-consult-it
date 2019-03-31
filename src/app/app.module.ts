@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ExtraitPipe } from './extrait.pipe';
 import { PostsComponent } from './posts/posts.component';
 import { VotesComponent } from './votes/votes.component';
+import { PanelComponent } from './panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { VotesComponent } from './votes/votes.component';
     ContentComponent,
     ExtraitPipe,
     PostsComponent,
-    VotesComponent
+    VotesComponent,
+    PanelComponent
   ],
   imports: [
     BrowserModule,

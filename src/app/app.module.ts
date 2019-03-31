@@ -17,6 +17,16 @@ import { PanelComponent } from './panel/panel.component';
 
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
+import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+const routes: Routes = [
+  {path: '', redirectTo: '/posts', pathMatch: 'full'},
+  {path: 'posts', component: PostsComponent},
+  {path: 'courses', component: ContentComponent},
+  {path: '**', component: PageNotFoundComponent}
+]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,13 +37,15 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     ExtraitPipe,
     PostsComponent,
     VotesComponent,
-    PanelComponent
+    PanelComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

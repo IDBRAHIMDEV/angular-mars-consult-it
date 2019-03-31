@@ -9,6 +9,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
+  
+  editable = false;
   post = {
     title: '',
     body: ''
@@ -55,6 +57,48 @@ export class PostsComponent implements OnInit {
    this.courseService.getAllClients()
                      .subscribe((res: any[]) => {
                         this.posts = res;
+                     })
+ }
+
+ editPost(post) {
+   this.post = post;
+   this.editable = this.showForm = true
+ }
+
+ addForm() {
+   
+    if(!this.editable && this.showForm){
+      this.showForm = false;
+    }
+   else if(this.editable) {
+    this.post = {
+      title: '',
+      body: ''
+    };
+    this.editable = false;
+   }
+   else{
+    this.showForm = !this.showForm;
+   }
+     
+ }
+
+ updatePost() {
+   this.courseService.updatePost(this.post)
+                     .subscribe(res => {
+                       this.post = {
+                         title: '',
+                         body: ''
+                       }
+                       console.log(res)
+                       this.showForm = false;
+                     })
+ }
+
+ removePost(id, index) {
+   this.courseService.deletePost(id)
+                     .subscribe(res => {
+                       this.posts.splice(index, 1);
                      })
  }
 

@@ -4,7 +4,7 @@
     <h2>List of Posts</h2>
   </div>
   <div class="col-md-6 text-right">
-    <button class="btn btn-sm btn-success" (click)="showForm = !showForm">
+    <button class="btn btn-sm btn-success" (click)="addForm()">
       <i class="fa fa-plus"></i> Add
     </button>
   </div>
@@ -23,7 +23,9 @@
          <textarea [(ngModel)]="post.body" class="form-control" id="Body"  rows="4"></textarea>
       </div>
 
-      <button (click)="createPost()" class="btn btn-block btn-primary"><i class="fa fa-send"></i> Add new post</button>
+      <button *ngIf="!editable" (click)="createPost()" class="btn btn-block btn-primary"><i class="fa fa-send"></i> Add new post</button>
+
+      <button *ngIf="editable" (click)="updatePost()" class="btn btn-block btn-warning"><i class="fa fa-refresh"></i> Update post</button>
 
     </div>
   </div>
@@ -51,12 +53,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let post of posts">
+        <tr (dblclick)="removePost(post.id, i)" *ngFor="let post of posts; index as i">
           <td>{{ post.title }}</td>
           <td>{{ post.body }}</td>
           <td class="text-right" nowrap>
-            <button class="btn btn-sm btn-warning mr-2">Edit</button>
-            <button class="btn btn-sm btn-danger">Delete</button>
+            <button class="btn btn-sm btn-warning mr-2" (click)="editPost(post)">Edit</button>
+            <button (click)=" removePost(post.id, i)" class="btn btn-sm btn-danger">Delete</button>
           </td>
         </tr>
       </tbody>

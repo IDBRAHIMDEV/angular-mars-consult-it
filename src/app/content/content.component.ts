@@ -15,12 +15,14 @@ export class ContentComponent implements OnInit {
     id: 0,
     title: '',
     price: 0,
-    description: ''
+    description: '',
+    active: true,
+    votes: {like: 0, disLike:0}
   }
 
   courses = [
-    {id: 1, title: "Symfony", price: 12.578, description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, aliquam."},
-    {id: 2, title: "Laravel", price: 45.554, description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, aliquam."}
+    {votes: {like: 182, disLike:5}, active: true, id: 1, title: "Symfony", price: 12.578, description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, aliquam."},
+    {votes: {like: 12, disLike: 2}, active: false, id: 2, title: "Laravel", price: 45.554, description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, aliquam."}
   ];
 
   constructor() { }
@@ -78,8 +80,22 @@ export class ContentComponent implements OnInit {
       id: 0,
       title: '',
       price: 0,
-      description: ''
+      description: '',
+      active: true,
+      votes: {like: 0, disLike:0}
     }
+  }
+
+  togglePower(course) {
+    course.active = !course.active;
+  }
+
+  like(course) {
+    course.votes.like++;
+  }
+
+  disLike(course) {
+    course.votes.disLike++;
   }
 
 }

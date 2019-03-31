@@ -25,20 +25,31 @@
 
     <button class="btn btn-danger btn-block mb-2" 
     *ngIf="!editable"
-    (click)="addCourse()">Add</button>
+    (click)="addCourse()"> 
+      <i class="fa fa-send"></i> Add
+    </button>
 
 
      <ul class="list-group">
        <li class="list-group-item" 
         *ngFor="let course of courses; index as i">
+         <i (click)="togglePower(course)" class="fa fa-power-off" [ngClass]="{
+           'green-color': course.active,
+           'red-color': !course.active
+         }"></i> 
          {{ course.title | uppercase | titlecase }} Price: {{ course.price | currency:'EUR':'symbol':'1.2-3' }}  <br>
          {{ course.description | summary:30 }}
+             
+         <app-votes [like]="course.votes.like" [dis-like]="course.votes.disLike"></app-votes>
+
         <div class="text-right">
           <button class="btn btn-sm btn-dark mr-1"
           (click)="editCourse(course)"
-          >Edit</button>
+          ><i class="fa fa-pencil"></i>  </button>
          <button class="btn btn-sm btn-danger" 
-         (click)="deleteCourse(i)">Delete</button>
+         (click)="deleteCourse(i)">
+            <i class="fa fa-trash"></i>
+          </button>
         </div>
   
        </li>

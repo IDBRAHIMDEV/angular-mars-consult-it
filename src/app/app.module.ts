@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ExtraitPipe } from './extrait.pipe';
 import { PostsComponent } from './posts/posts.component';
+import { VotesComponent } from './votes/votes.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PostsComponent } from './posts/posts.component';
     SidebarComponent,
     ContentComponent,
     ExtraitPipe,
-    PostsComponent
+    PostsComponent,
+    VotesComponent
   ],
   imports: [
     BrowserModule,

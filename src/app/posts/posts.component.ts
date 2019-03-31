@@ -19,7 +19,6 @@ export class PostsComponent implements OnInit {
    this.courseService.getAllClients()
                      .subscribe((res: any[]) => {
                         this.posts = res;
-                        console.log(res);
                      })
  }
 

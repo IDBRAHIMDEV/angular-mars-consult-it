@@ -15,6 +15,8 @@ import { PostsComponent } from './posts/posts.component';
 import { VotesComponent } from './votes/votes.component';
 import { PanelComponent } from './panel/panel.component';
 
+import { FlashMessagesModule } from 'angular2-flash-messages';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,8 @@ import { PanelComponent } from './panel/panel.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FlashMessagesModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
